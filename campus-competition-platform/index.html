@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园竞赛管理平台 - 首页</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-trophy me-2"></i>校园竞赛平台
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="competitions.html">竞赛列表</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="my-registrations.html">我的报名</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin.html">管理后台</a>
+                    </li>
+                </ul>
+                <div class="navbar-nav">
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user me-1"></i> <span id="username">学生用户</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" id="switch-role">切换为管理员</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" id="logout-btn">退出登录</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">校园竞赛管理平台</h1>
+                    <p class="lead mb-4">一站式校园竞赛管理解决方案，为学生、教师和组织者提供便捷高效的竞赛参与和管理体验。</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="competitions.html" class="btn btn-light btn-lg">
+                            <i class="fas fa-list me-2"></i>浏览竞赛
+                        </a>
+                        <a href="my-registrations.html" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-clipboard-list me-2"></i>我的报名
+                        </a>
+                        <a href="admin.html" class="btn btn-outline-light btn-lg admin-only">
+                            <i class="fas fa-cog me-2"></i>管理后台
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="hero-image">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能特色 -->
+    <section class="features-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 section-title">平台特色</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card text-center p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h4>竞赛发现</h4>
+                        <p>浏览各类校园竞赛，通过分类筛选快速找到感兴趣的竞赛项目。</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <h4>在线报名</h4>
+                        <p>一键报名参与竞赛，提交必要资料，实时查看报名状态。</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h4>数据管理</h4>
+                        <p>管理员可轻松管理竞赛信息，查看报名统计，导出数据报表。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 热门竞赛 -->
+    <section class="popular-competitions py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5 section-title">热门竞赛</h2>
+            <div class="row g-4" id="popular-competitions">
+                <!-- 热门竞赛将通过JS动态生成 -->
+            </div>
+            <div class="text-center mt-4">
+                <a href="competitions.html" class="btn btn-primary btn-lg">查看全部竞赛</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 统计信息 -->
+    <section class="stats-section py-5">
+        <div class="container">
+            <div class="row text-center g-4">
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <h3 class="display-4 fw-bold text-primary" id="total-competitions">0</h3>
+                        <p class="text-muted">总竞赛数</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <h3 class="display-4 fw-bold text-success" id="total-participants">0</h3>
+                        <p class="text-muted">总参与人数</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <h3 class="display-4 fw-bold text-warning" id="active-competitions">0</h3>
+                        <p class="text-muted">进行中竞赛</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <h3 class="display-4 fw-bold text-info" id="upcoming-competitions">0</h3>
+                        <p class="text-muted">即将开始</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>校园竞赛管理平台</h5>
+                    <p>为校园内各类竞赛、活动和赛事设计的智能应用</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2023 校园竞赛平台. 保留所有权利.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 脚本引入 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

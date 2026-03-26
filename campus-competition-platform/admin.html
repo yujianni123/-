@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理后台 - 校园竞赛管理平台</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-trophy me-2"></i>校园竞赛平台
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="competitions.html">竞赛列表</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="my-registrations.html">我的报名</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="admin.html">管理后台</a>
+                    </li>
+                </ul>
+                <div class="navbar-nav">
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user me-1"></i> <span id="username">管理员</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" id="switch-role">切换为学生</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" id="logout-btn">退出登录</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面内容 -->
+    <div class="container mt-5 pt-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="page-title">竞赛管理后台</h1>
+            <a href="index.html" class="btn btn-outline-primary">
+                <i class="fas fa-arrow-left me-2"></i>返回首页
+            </a>
+        </div>
+        
+        <!-- 管理员功能选项卡 -->
+        <ul class="nav nav-tabs mb-4" id="adminTabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#add-competition">添加竞赛</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#manage-competitions">管理竞赛</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#statistics">数据统计</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#participants">报名管理</a>
+            </li>
+        </ul>
+        
+        <div class="tab-content">
+            <!-- 添加竞赛标签页 -->
+            <div class="tab-pane fade show active" id="add-competition">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">发布新竞赛</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="add-competition-form">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="comp-name" class="form-label">竞赛名称</label>
+                                        <input type="text" class="form-control" id="comp-name" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="comp-category" class="form-label">竞赛类别</label>
+                                        <select class="form-select" id="comp-category" required>
+                                            <option value="">请选择类别</option>
+                                            <option value="academic">学科竞赛</option>
+                                            <option value="tech">科技创新</option>
+                                            <option value="sports">体育竞赛</option>
+                                            <option value="arts">文化艺术</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="comp-difficulty" class="form-label">竞赛难度</label>
+                                        <select class="form-select" id="comp-difficulty" required>
+                                            <option value="">请选择难度</option>
+                                            <option value="easy">初级</option>
+                                            <option value="medium">中级</option>
+                                            <option value="hard">高级</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="comp-date" class="form-label">竞赛时间</label>
+                                        <input type="datetime-local" class="form-control" id="comp-date" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="comp-location" class="form-label">竞赛地点</label>
+                                        <input type="text" class="form-control" id="comp-location" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="comp-max-participants" class="form-label">最大报名人数</label>
+                                        <input type="number" class="form-control" id="comp-max-participants" min="1" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="comp-description" class="form-label">竞赛描述</label>
+                                        <textarea class="form-control" id="comp-description" rows="3" required></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="comp-requirements" class="form-label">参与要求 (每行一个要求)</label>
+                                        <textarea class="form-control" id="comp-requirements" rows="3" required></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="comp-awards" class="form-label">奖项设置 (每行一个奖项)</label>
+                                        <textarea class="form-control" id="comp-awards" rows="3" required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">发布竞赛</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 管理竞赛标签页 -->
+            <div class="tab-pane fade" id="manage-competitions">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0">竞赛管理</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>竞赛名称</th>
+                                        <th>类别</th>
+                                        <th>时间</th>
+                                        <th>报名人数</th>
+                                        <th>状态</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-competition-table">
+                                    <!-- 管理员竞赛表格将通过JS动态生成 -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 数据统计标签页 -->
+            <div class="tab-pane fade" id="statistics">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card mb-4">
+                            <div class="card-header bg-success text-white">
+                                <h5 class="mb-0">报名统计图表</h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="registration-chart" height="250"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <div class="card-header bg-warning text-white">
+                                <h5 class="mb-0">数据导出</h5>
+                            </div>
+                            <div class="card-body text-center">
+                                <button class="btn btn-success w-100 mb-3" id="export-excel">
+                                    <i class="fas fa-file-excel me-2"></i>导出Excel
+                                </button>
+                                <button class="btn btn-primary w-100 mb-3" id="export-pdf">
+                                    <i class="fas fa-file-pdf me-2"></i>导出PDF
+                                </button>
+                                <button class="btn btn-secondary w-100" id="print-data">
+                                    <i class="fas fa-print me-2"></i>打印数据
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header bg-info text-white">
+                                <h5 class="mb-0">统计概览</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="stat-summary">
+                                    <div class="stat-item">
+                                        <span class="stat-label">总竞赛数</span>
+                                        <span class="stat-value" id="admin-total-competitions">0</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label">总报名人数</span>
+                                        <span class="stat-value" id="admin-total-participants">0</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label">平均参与率</span>
+                                        <span class="stat-value" id="admin-avg-participation">0%</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label">最热门竞赛</span>
+                                        <span class="stat-value" id="admin-most-popular">-</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 报名管理标签页 -->
+            <div class="tab-pane fade" id="participants">
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">
+                        <h5 class="mb-0">报名人员管理</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <select class="form-select" id="participant-competition-filter">
+                                    <option value="">选择竞赛查看报名</option>
+                                    <!-- 竞赛选项将通过JS动态生成 -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>姓名</th>
+                                        <th>学号</th>
+                                        <th>学院</th>
+                                        <th>专业</th>
+                                        <th>联系电话</th>
+                                        <th>报名时间</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="participant-table">
+                                    <!-- 报名人员表格将通过JS动态生成 -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="text-center py-4 d-none" id="no-participants">
+                            <i class="fas fa-users fa-3x text-muted mb-3"></i>
+                            <h4 class="text-muted">暂无报名人员</h4>
+                            <p class="text-muted">选择竞赛查看报名人员</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 编辑竞赛模态框 -->
+    <div class="modal fade" id="editCompetitionModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">编辑竞赛信息</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="edit-competition-form">
+                        <input type="hidden" id="edit-comp-id">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="edit-comp-name" class="form-label">竞赛名称</label>
+                                    <input type="text" class="form-control" id="edit-comp-name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="edit-comp-category" class="form-label">竞赛类别</label>
+                                    <select class="form-select" id="edit-comp-category" required>
+                                        <option value="academic">学科竞赛</option>
+                                        <option value="tech">科技创新</option>
+                                        <option value="sports">体育竞赛</option>
+                                        <option value="arts">文化艺术</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="edit-comp-difficulty" class="form-label">竞赛难度</label>
+                                    <select class="form-select" id="edit-comp-difficulty" required>
+                                        <option value="easy">初级</option>
+                                        <option value="medium">中级</option>
+                                        <option value="hard">高级</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="edit-comp-date" class="form-label">竞赛时间</label>
+                                    <input type="datetime-local" class="form-control" id="edit-comp-date" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="edit-comp-location" class="form-label">竞赛地点</label>
+                                    <input type="text" class="form-control" id="edit-comp-location" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="edit-comp-max-participants" class="form-label">最大报名人数</label>
+                                    <input type="number" class="form-control" id="edit-comp-max-participants" min="1" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="edit-comp-description" class="form-label">竞赛描述</label>
+                                    <textarea class="form-control" id="edit-comp-description" rows="3" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-comp-requirements" class="form-label">参与要求 (每行一个要求)</label>
+                            <textarea class="form-control" id="edit-comp-requirements" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-comp-awards" class="form-label">奖项设置 (每行一个奖项)</label>
+                            <textarea class="form-control" id="edit-comp-awards" rows="3" required></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="save-competition-changes">保存更改</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>校园竞赛管理平台</h5>
+                    <p>为校园内各类竞赛、活动和赛事设计的智能应用</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2023 校园竞赛平台. 保留所有权利.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 脚本引入 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+/* 管理员页面特定样式 */
+
+/* 统计卡片样式 */
+.stat-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.stat-card .stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.stat-card .stat-label {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* 图表容器 */
+.chart-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+}
+
+/* 数据表格样式 */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+.data-table td {
+    padding: 12px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.data-table tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* 操作按钮组 */
+.action-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.action-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.btn-edit {
+    background-color: var(--warning-color);
+    color: white;
+}
+
+.btn-delete {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.btn-view {
+    background-color: var(--info-color);
+    color: white;
+}
+
+/* 表单样式 */
+.admin-form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.form-section {
+    margin-bottom: 25px;
+}
+
+.form-section h4 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--light-color);
+}
+
+/* 响应式表格 */
+@media (max-width: 768px) {
+    .data-table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .action-btn {
+        margin-bottom: 5px;
+    }
+}

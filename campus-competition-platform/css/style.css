@@ -1,0 +1,286 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --accent-color: #e74c3c;
+    --light-color: #ecf0f1;
+    --success-color: #2ecc71;
+    --warning-color: #f39c12;
+    --info-color: #1abc9c;
+    --dark-color: #34495e;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    padding-top: 76px; /* 为固定导航栏留出空间 */
+}
+
+/* 导航栏样式 */
+.navbar-brand {
+    font-weight: 700;
+    color: var(--light-color) !important;
+}
+
+.navbar-nav .nav-link {
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* 英雄区域样式 */
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 120px 0 80px;
+    margin-bottom: 40px;
+}
+
+.hero-image {
+    font-size: 15rem;
+    color: rgba(255, 255, 255, 0.1);
+}
+
+/* 卡片样式 */
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    border-radius: 12px 12px 0 0 !important;
+    font-weight: 600;
+}
+
+/* 竞赛卡片样式 */
+.competition-card {
+    height: 100%;
+}
+
+.competition-card .card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.competition-card .card-text {
+    flex-grow: 1;
+}
+
+/* 徽章样式 */
+.badge-academic {
+    background-color: var(--primary-color);
+}
+
+.badge-tech {
+    background-color: var(--success-color);
+}
+
+.badge-sports {
+    background-color: var(--accent-color);
+}
+
+.badge-arts {
+    background-color: var(--info-color);
+}
+
+.badge-easy {
+    background-color: var(--success-color);
+}
+
+.badge-medium {
+    background-color: var(--warning-color);
+}
+
+.badge-hard {
+    background-color: var(--accent-color);
+}
+
+/* 按钮样式 */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+    border-color: #2980b9;
+}
+
+.btn-success {
+    background-color: var(--success-color);
+    border-color: var(--success-color);
+}
+
+.btn-warning {
+    background-color: var(--warning-color);
+    border-color: var(--warning-color);
+}
+
+/* 页面标题 */
+.page-title {
+    border-left: 5px solid var(--primary-color);
+    padding-left: 15px;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.section-title {
+    position: relative;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--primary-color);
+}
+
+/* 特色功能卡片 */
+.feature-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    height: 100%;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    color: white;
+    font-size: 2rem;
+}
+
+/* 统计区域 */
+.stats-section {
+    background: linear-gradient(135deg, var(--secondary-color), #34495e);
+    color: white;
+}
+
+.stat-item h3 {
+    margin-bottom: 0.5rem;
+}
+
+/* 表格样式 */
+.table th {
+    border-top: none;
+    font-weight: 600;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* 进度条样式 */
+.progress {
+    height: 8px;
+    border-radius: 4px;
+}
+
+.progress-bar {
+    border-radius: 4px;
+}
+
+/* 页脚样式 */
+footer {
+    margin-top: auto;
+}
+
+/* 管理员专用元素 */
+.admin-only {
+    display: none;
+}
+
+body.admin .admin-only {
+    display: block;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 100px 0 60px;
+    }
+    
+    .hero-image {
+        font-size: 8rem;
+    }
+    
+    .card {
+        margin-bottom: 15px;
+    }
+    
+    body {
+        padding-top: 66px;
+    }
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* 选项卡样式 */
+.nav-tabs .nav-link {
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--primary-color);
+    font-weight: 600;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+/* 统计摘要样式 */
+.stat-summary .stat-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.stat-summary .stat-item:last-child {
+    border-bottom: none;
+}
+
+.stat-summary .stat-label {
+    color: #6c757d;
+}
+
+.stat-summary .stat-value {
+    font-weight: 600;
+    color: var(--primary-color);
+}
